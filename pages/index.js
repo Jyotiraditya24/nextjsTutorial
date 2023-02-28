@@ -3,9 +3,9 @@ import { useRouter } from "next/router";
 
 function Home() {
   const router = useRouter();
-  function onHandleClick(){
+  function onHandleClick() {
     console.log("order placed");
-    router.push('/product');
+    router.push("/product");
   }
   return (
     <div>
