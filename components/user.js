@@ -9,3 +9,4 @@ function User({ user }) { //or we can also user prop
 }
 
 export default User;
+  

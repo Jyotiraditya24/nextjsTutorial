@@ -12,9 +12,13 @@ function Home() {
       <h1>Home page</h1>
       <Link href="/blog">Click to here to view Blog</Link>
       <Link href="/product">Products</Link>
+      <Link href="/users">USERS</Link>
       <button onClick={onHandleClick}>Place order</button>
     </div>
   );
 }
 
-export default Home;
+ export default Home;
+
+// the type document has been served that is the page
+// the page and its chunk is downloaded 
