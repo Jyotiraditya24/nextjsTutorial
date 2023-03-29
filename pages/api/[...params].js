@@ -14,5 +14,5 @@ just delete the index.js file , but this will show an error because
 catch all routes needs a parameter
 
 we have something called optional catch all routes, to remove this error
-just add [[params]] then we will have no error
+just add [[...params]] then we will have no error
 */

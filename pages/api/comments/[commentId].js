@@ -1,22 +1,35 @@
 import { comments } from "@/data/comments";
+import { useContext } from "react";
 
-// for delete we need an id so we have created a dynamic route
-export default function handler(req, res) {
-  const { commentId } = req.query;
+export function Comment({ comment }) {
+  return (
+    <div>
+      <h1>
+        id: {comment.id}. {comment.text}
+      </h1>
+    </div>
+  );
+}
 
-  if (req.method === "GET") {
-    const comment = comments.find(
-      (comment) => comment.id === parseInt(commentId)
-    );
-    res.status(200).json(comment);
-  } else if (req.method === "DELETE") {
-    const deletedComment = comments.find(
-      (comment) => comment.id === parseInt(commentId)
-    );
-    const index = comments.findIndex(
-      (comment) => comment.id === parseInt(commentId)
-    );
-    comments.splice(index, 1);
-    res.status(200).json(deletedComment);
+export default async function getStaticPaths() {
+  return {
+    paths: [
+      { params: { commentId: 1 } },
+      { params: { commentId: 2 } },
+      { params: { commentId: 3 } },
+    ],
+    fallback: false,
+  };
+}
+
+export default async function getStaticProps(context){
+  const {params} = context;
+  const {commentId} = params;
+  /* DONOT call the own api route from getStaticProps or getStaticProps */
+  const comment = comments.find((comment)=> comment.id === commentId);
+  return {
+    props: {
+      comment
+    }
   }
 }
